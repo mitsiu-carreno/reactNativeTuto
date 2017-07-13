@@ -16,11 +16,12 @@ export default class App extends React.Component {
     };
     return (
       <View style={styles.container}>
-        <Image source = {pic} style={{width:193, height:110}} />
+        <Image source = {pic} style={{width:193, height:210}} />
         <Text>Open up App.js to start working on your app!</Text>
         <Text>Changes you make will automatically reload.</Text>
         <Text>Hi love, my kary</Text>
         <Greeting name="kary" />
+        <Greeting name="mitsiu" />
       </View>
     );
   }
