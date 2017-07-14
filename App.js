@@ -9,6 +9,27 @@ class Greeting extends React.Component{
   }
 }
 
+class Blink extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = { showText : true};    //Use state for data that is going to change
+
+    //Toggle the state every second
+    setInterval(() =>{
+      this.setState(previousState =>{
+        return {showText : !previousState.showText };
+      })
+    }, 1000);
+  }
+
+  render(){
+    let display = this.state.showText ? this.props.text : '';
+    return (
+      <Text>{display}</Text>
+    );
+  }
+}
+
 export default class App extends React.Component {
   render() {
     let pic = {
@@ -17,11 +38,13 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Image source = {pic} style={{width:193, height:210}} />
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Hi love, my kary</Text>
+        <Text style={styles.bigRed}>Hi love, my kary</Text>
         <Greeting name="kary" />
         <Greeting name="mitsiu" />
+        <Blink text="i love u" />
+        <View style={{width : 50, height : 50, backgroundColor : 'powderblue'}}></View>
+        <View style={{width : 100, height : 100, backgroundColor : 'skyblue'}}></View>
+        <View style={{width : 150, height : 150, backgroundColor : 'steelblue'}}></View>
       </View>
     );
   }
@@ -36,4 +59,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  bigRed : {
+    color: 'red',
+    fontWeight : 'bold',
+    fontSize: 30,
+  }
 });
