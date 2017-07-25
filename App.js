@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 
 class Greeting extends React.Component{
   render() {
@@ -37,14 +37,26 @@ export default class App extends React.Component {
     };
     return (
       <View style={styles.container}>
-        <Image source = {pic} style={{width:193, height:210}} />
-        <Text style={styles.bigRed}>Hi love, my kary</Text>
-        <Greeting name="kary" />
-        <Greeting name="mitsiu" />
-        <Blink text="i love u" />
-        <View style={{width : 50, height : 50, backgroundColor : 'powderblue'}}></View>
-        <View style={{width : 100, height : 100, backgroundColor : 'skyblue'}}></View>
-        <View style={{width : 150, height : 150, backgroundColor : 'steelblue'}}></View>
+        <ScrollView>
+          <Image source = {pic} style={{width:193, height:210}} />
+          <Text style={styles.bigRed}>Hi love, my kary</Text>
+          <Greeting name="kary" />
+          <Greeting name="mitsiu" />
+          <Blink text="i love u" />
+          {/* Will always render at the exact same size, regardless of screen dimentions */}
+          <Text>Static</Text>
+          <View style={{width : 50, height : 50, backgroundColor : 'powderblue'}}></View>
+          <View style={{width : 100, height : 100, backgroundColor : 'skyblue'}}></View>
+          <View style={{width : 150, height : 150, backgroundColor : 'steelblue'}}></View>
+
+          {/* Flex is a component's style that expand and shrink dynamically based on available space */}
+          <Text>Dynaic</Text>
+          <View style={{width:200, height:400}}>
+            <View style={{flex : 1, backgroundColor : 'powderblue'}}></View>
+            <View style={{flex : 2, backgroundColor : 'skyblue'}}></View>
+            <View style={{flex : 3, backgroundColor : 'steelblue'}}></View>
+          </View>
+        </ScrollView>
       </View>
     );
   }
